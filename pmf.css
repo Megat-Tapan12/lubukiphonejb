@@ -1,0 +1,1333 @@
+/* =============================================================================
+   PMF - Lubuk iPhone JB | Main Stylesheet
+   File: pmf.css
+   Linked from: pmf.html
+   ============================================================================= */
+
+
+/* =============================================================================
+   1. WORDPRESS / BLOCK LIBRARY BASE STYLES
+   ============================================================================= */
+
+img:is([sizes=auto i], [sizes^="auto," i]) {
+  contain-intrinsic-size: 3000px 1500px;
+}
+
+:root {
+  --wp-block-synced-color: #7a00df;
+  --wp-admin-theme-color: #007cba;
+  --wp--preset--font-size--normal: 16px;
+  --wp--preset--font-size--huge: 42px;
+  --wp--preset--font-family--manrope: Manrope, sans-serif;
+  --wp--preset--font-family--fira-code: "Fira Code", monospace;
+}
+
+.wp-element-button {
+  cursor: pointer;
+}
+
+.screen-reader-text {
+  border: 0;
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  word-wrap: normal !important;
+}
+
+.screen-reader-text:focus {
+  background-color: #ddd;
+  clip-path: none;
+  color: #444;
+  display: block;
+  font-size: 1em;
+  height: auto;
+  left: 5px;
+  line-height: normal;
+  padding: 15px 23px 14px;
+  text-decoration: none;
+  top: 5px;
+  width: auto;
+  z-index: 100000;
+}
+
+html :where(.has-border-color) {
+  border-style: solid;
+}
+
+html :where([style*=border-top-color]) {
+  border-top-style: solid;
+}
+
+html :where([style*=border-right-color]) {
+  border-right-style: solid;
+}
+
+html :where([style*=border-bottom-color]) {
+  border-bottom-style: solid;
+}
+
+html :where([style*=border-left-color]) {
+  border-left-style: solid;
+}
+
+html :where([style*=border-width]) {
+  border-style: solid;
+}
+
+html :where(img[class*=wp-image-]) {
+  height: auto;
+  max-width: 100%;
+}
+
+:where(figure) {
+  margin: 0 0 1em;
+}
+
+.aligncenter {
+  clear: both;
+}
+
+.has-text-align-center {
+  text-align: center;
+}
+
+.has-text-align-left {
+  text-align: left;
+}
+
+.has-text-align-right {
+  text-align: right;
+}
+
+.has-fit-text {
+  white-space: nowrap !important;
+}
+
+#end-resizable-editor-section {
+  display: none;
+}
+
+.items-justified-left {
+  justify-content: flex-start;
+}
+
+.items-justified-center {
+  justify-content: center;
+}
+
+.items-justified-right {
+  justify-content: flex-end;
+}
+
+.items-justified-space-between {
+  justify-content: space-between;
+}
+
+.has-regular-font-size {
+  font-size: 1em;
+}
+
+.has-larger-font-size {
+  font-size: 2.625em;
+}
+
+.has-normal-font-size {
+  font-size: var(--wp--preset--font-size--normal);
+}
+
+.has-huge-font-size {
+  font-size: var(--wp--preset--font-size--huge);
+}
+
+/* WP layout utilities */
+:root :where(.is-layout-flow)> :first-child {
+  margin-block-start: 0;
+}
+
+:root :where(.is-layout-flow)> :last-child {
+  margin-block-end: 0;
+}
+
+:root :where(.is-layout-flow)>* {
+  margin-block-start: 1.2rem;
+  margin-block-end: 0;
+}
+
+:root :where(.is-layout-flex) {
+  gap: 1.2rem;
+}
+
+:root :where(.is-layout-grid) {
+  gap: 1.2rem;
+}
+
+body .is-layout-flex {
+  display: flex;
+}
+
+.is-layout-flex {
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.is-layout-flex> :is(*, div) {
+  margin: 0;
+}
+
+body .is-layout-grid {
+  display: grid;
+}
+
+.is-layout-grid> :is(*, div) {
+  margin: 0;
+}
+
+/* WP Block Button */
+.wp-block-button__link {
+  color: #fff;
+  background-color: #32373c;
+  border-radius: 9999px;
+  box-shadow: none;
+  text-decoration: none;
+  padding: calc(.667em + 2px) calc(1.333em + 2px);
+  font-size: 1.125em;
+}
+
+.wp-block-file__button {
+  background: #32373c;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* WP Font faces (local) */
+@font-face {
+  font-family: Manrope;
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: fallback;
+  src: url('https://lubukiphonejb.com/wp-content/themes/oxygen-is-not-a-theme/assets/fonts/manrope/Manrope-VariableFont_wght.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: "Fira Code";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: fallback;
+  src: url('https://lubukiphonejb.com/wp-content/themes/oxygen-is-not-a-theme/assets/fonts/fira-code/FiraCode-VariableFont_wght.woff2') format('woff2');
+}
+
+/* WP color/bg utilities (abbreviated — full set kept for compatibility) */
+.has-white-color {
+  color: #fff !important;
+}
+
+.has-black-color {
+  color: #000 !important;
+}
+
+.has-white-background-color {
+  background-color: #fff !important;
+}
+
+.has-black-background-color {
+  background-color: #000 !important;
+}
+
+.has-vivid-cyan-blue-color {
+  color: #0693e3 !important;
+}
+
+.has-vivid-purple-color {
+  color: #9b51e0 !important;
+}
+
+/* WP icon widths */
+.ct-FontAwesomeicon-map-marker {
+  width: 0.57142857142857em;
+}
+
+.ct-FontAwesomeicon-facebook {
+  width: 0.57142857142857em;
+}
+
+.ct-FontAwesomeicon-instagram {
+  width: 0.85714285714286em;
+}
+
+.ct-FontAwesomeicon-whatsapp {
+  width: 0.85714285714286em;
+}
+
+.ct-FontAwesomeicon-tiktok {
+  width: 0.875em;
+}
+
+/* Utility: whiting (footer note) */
+.whiting {
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+}
+
+
+/* =============================================================================
+   2. CHATY WHATSAPP WIDGET STYLES
+   ============================================================================= */
+
+/* --- Branding Colors --- */
+#chaty-widget-0 .Whatsapp-channel .color-element,
+#chaty-widget-0 .channel-icon-Whatsapp .color-element {
+  fill: #49E670;
+  color: #49E670;
+}
+
+#chaty-widget-0 .Whatsapp-channel .chaty-custom-icon,
+#chaty-widget-0 .Whatsapp-channel .chaty-svg,
+#chaty-widget-0 .channel-icon-Whatsapp .chaty-svg {
+  background-color: #49E670;
+}
+
+/* --- Channel Button Size & Shape --- */
+#chaty-widget-0 .chaty-channel-list .chaty-channel,
+#chaty-widget-0 .chaty-channel-list .chaty-channel>a,
+#chaty-widget-0 .chaty-channel-list .chaty-channel button,
+#chaty-widget-0 .chaty-channel-list .chaty-channel .chaty-svg,
+#chaty-widget-0 .chaty-channel-list .chaty-channel .chaty-svg img,
+#chaty-widget-0 .chaty-channel-list .chaty-channel span.chaty-icon,
+#chaty-widget-0 .chaty-channel-list .chaty-channel a,
+#chaty-widget-0 .chaty-i-trigger .chaty-channel,
+#chaty-widget-0 .chaty-i-trigger .chaty-channel>a,
+#chaty-widget-0 .chaty-i-trigger .chaty-channel button,
+#chaty-widget-0 .chaty-i-trigger .chaty-channel .chaty-svg,
+#chaty-widget-0 .chaty-i-trigger .chaty-channel .chaty-svg img,
+#chaty-widget-0 .chaty-i-trigger .chaty-channel span.chaty-icon,
+#chaty-widget-0 .chaty-i-trigger .chaty-channel a {
+  width: 54px;
+  height: 54px;
+}
+
+/* --- Custom Icon Block Size --- */
+#chaty-widget-0 .chaty-channel-list .chaty-channel>a .chaty-custom-icon,
+#chaty-widget-0 .chaty-i-trigger .chaty-channel>a .chaty-custom-icon,
+#chaty-widget-0 .chaty-channel-list .chaty-channel .chaty-svg .chaty-custom-channel-icon,
+#chaty-widget-0 .chaty-i-trigger .chaty-channel .chaty-svg .chaty-custom-channel-icon {
+  display: block;
+  width: 54px;
+  height: 54px;
+  line-height: 54px;
+  font-size: 27px;
+}
+
+/* --- Button Base --- */
+#chaty-widget-0 .chaty-channel-list .chaty-channel button,
+#chaty-widget-0 .chaty-i-trigger .chaty-channel button {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#chaty-widget-0 .chaty-channel-list .chaty-channel button:hover,
+#chaty-widget-0 .chaty-i-trigger .chaty-channel button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Main Trigger Button (Purple) --- */
+#chaty-widget-0 .chaty-i-trigger .chaty-cta-button,
+#chaty-widget-0 .chaty-i-trigger .chaty-cta-button button {
+  background-color: #A886CD;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#chaty-widget-0 .chaty-i-trigger .chaty-cta-button button:hover {
+  background-color: #9675bd;
+  transform: scale(1.05);
+}
+
+/* --- Pending Badge --- */
+#chaty-widget-0 .chaty-i-trigger .ch-pending-msg {
+  background-color: #dd0000;
+  color: #ffffff;
+  padding: 4px 8px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: bold;
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  min-width: 20px;
+  text-align: center;
+}
+
+/* --- Widget Icon Font Size --- */
+#chaty-widget-0 .chaty-i-trigger .chaty-channel .chaty-svg .widget-fa-icon {
+  line-height: 54px;
+  font-size: 27px;
+}
+
+/* --- Widget Container --- */
+#chaty-widget-0 .chaty-channel-list {
+  height: 62px;
+  width: 62px;
+  position: relative;
+}
+
+/* --- Slide Animations --- */
+#chaty-widget-0 .chaty-open .chaty-channel-list .chaty-channel:nth-child(1) {
+  -webkit-transform: translateY(-62px);
+  transform: translateY(-62px);
+  transition: transform 0.3s ease;
+}
+
+#chaty-widget-0 .chaty-open.above-chaty.has-chatway .chaty-channel-list .chaty-channel:nth-child(1) {
+  -webkit-transform: translateY(-124px);
+  transform: translateY(-124px);
+}
+
+#chaty-widget-0 .chaty-open .chaty-channel-list .chaty-channel:nth-child(2),
+#chaty-widget-0 .chaty-open.above-chaty.has-chatway .chaty-channel-list .chaty-channel:nth-child(2) {
+  -webkit-transform: translateY(0px);
+  transform: translateY(0px);
+  transition: transform 0.3s ease 0.1s;
+}
+
+/* --- Widget Position (Bottom Right) --- */
+#chaty-widget-0 .chaty-widget {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  left: auto;
+  z-index: 9999;
+}
+
+/* --- Forms Position --- */
+.chaty-outer-forms.pos-right.chaty-form-0 {
+  position: fixed;
+  right: 25px;
+  left: auto;
+  z-index: 9998;
+}
+
+/* --- Form Slide Animation --- */
+.chaty-outer-forms.active.chaty-form-0,
+#chaty-widget-0.chaty:not(.form-open) .chaty-widget.chaty-open+.chaty-chat-view {
+  -webkit-transform: translateY(-94px);
+  transform: translateY(-94px);
+  transition: transform 0.3s ease;
+}
+
+/* --- Tooltips --- */
+#chaty-widget-0 .chaty-tooltip:after,
+#chaty-widget-0 .on-hover-text {
+  background-color: #ffffff;
+  color: #333333;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+#chaty-widget-0 .chaty-tooltip:after {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+#chaty-widget-0 .chaty-tooltip.pos-top:before {
+  border-top-color: #ffffff;
+}
+
+#chaty-widget-0 .chaty-tooltip.pos-left:before {
+  border-left-color: #ffffff;
+}
+
+#chaty-widget-0 .chaty-tooltip.pos-right:before {
+  border-right-color: #ffffff;
+}
+
+#chaty-widget-0 .chaty-tooltip.pos-top .on-hover-text:before {
+  border-top-color: #ffffff;
+}
+
+#chaty-widget-0 .chaty-tooltip.pos-left .on-hover-text:before {
+  border-left-color: #ffffff;
+}
+
+#chaty-widget-0 .chaty-tooltip.pos-right .on-hover-text:before {
+  border-right-color: #ffffff;
+}
+
+/* --- Scrollable Areas --- */
+.chaty-outer-forms.chaty-form-0 .chaty-agent-body {
+  max-height: calc(100vh - 220px);
+  overflow-y: auto;
+}
+
+.chaty-outer-forms.chaty-contact-form-box.chaty-form-0 .chaty-contact-inputs {
+  max-height: calc(100vh - 230px);
+  overflow-y: auto;
+}
+
+#chaty-form-0-Whatsapp .chaty-whatsapp-body {
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
+}
+
+/* --- Form Header --- */
+#chaty-form-0-chaty-chat-view .chaty-view-header {
+  background-color: #ffffff;
+  color: #333333;
+}
+
+#chaty-form-0-chaty-chat-view .chaty-view-header svg {
+  fill: #333333;
+}
+
+/* --- Font Family --- */
+#chaty-widget-0,
+#chaty-widget-0 .chaty-tooltip:after {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Oxygen-Sans', Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+}
+
+/* --- Smooth Scrollbar --- */
+.chaty-outer-forms .chaty-agent-body::-webkit-scrollbar,
+.chaty-outer-forms .chaty-contact-inputs::-webkit-scrollbar,
+#chaty-form-0-Whatsapp .chaty-whatsapp-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chaty-outer-forms .chaty-agent-body::-webkit-scrollbar-track,
+.chaty-outer-forms .chaty-contact-inputs::-webkit-scrollbar-track,
+#chaty-form-0-Whatsapp .chaty-whatsapp-body::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.chaty-outer-forms .chaty-agent-body::-webkit-scrollbar-thumb,
+.chaty-outer-forms .chaty-contact-inputs::-webkit-scrollbar-thumb,
+#chaty-form-0-Whatsapp .chaty-whatsapp-body::-webkit-scrollbar-thumb {
+  background: #A886CD;
+  border-radius: 3px;
+}
+
+.chaty-outer-forms .chaty-agent-body::-webkit-scrollbar-thumb:hover,
+.chaty-outer-forms .chaty-contact-inputs::-webkit-scrollbar-thumb:hover,
+#chaty-form-0-Whatsapp .chaty-whatsapp-body::-webkit-scrollbar-thumb:hover {
+  background: #9675bd;
+}
+
+/* --- Chaty Responsive --- */
+@media (max-width: 768px) {
+  #chaty-widget-0 .chaty-widget {
+    bottom: 15px;
+    right: 15px;
+  }
+
+  .chaty-outer-forms.pos-right.chaty-form-0 {
+    right: 15px;
+  }
+
+  #chaty-widget-0 .chaty-channel-list .chaty-channel,
+  #chaty-widget-0 .chaty-i-trigger .chaty-channel {
+    width: 48px;
+    height: 48px;
+  }
+
+  #chaty-widget-0 .chaty-channel-list .chaty-channel>a .chaty-custom-icon,
+  #chaty-widget-0 .chaty-i-trigger .chaty-channel>a .chaty-custom-icon {
+    line-height: 48px;
+    font-size: 24px;
+  }
+}
+
+/* --- Dark Mode --- */
+@media (prefers-color-scheme: dark) {
+
+  .lf-popover-content,
+  #chaty-widget-0 .chaty-tooltip:after,
+  #chaty-widget-0 .on-hover-text {
+    background-color: #2d2d2d;
+    color: #ffffff;
+  }
+
+  .lf-arrow {
+    border-color: #2d2d2d transparent transparent transparent;
+  }
+}
+
+
+/* =============================================================================
+   3. LF PLAYER / PROGRESS BAR COMPONENTS
+   ============================================================================= */
+
+/* --- Progress Bar --- */
+.lf-progress {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100%;
+  height: 4px;
+  border-radius: 3px;
+  cursor: pointer;
+  background: #e0e0e0;
+  outline: none;
+  border: none;
+  transition: height 0.2s ease;
+}
+
+.lf-progress:hover {
+  height: 6px;
+}
+
+.lf-progress::-webkit-slider-thumb {
+  -webkit-appearance: none !important;
+  height: 13px;
+  width: 13px;
+  border: 0;
+  border-radius: 50%;
+  background: #0fccce;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.lf-progress::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.lf-progress::-webkit-slider-thumb:active {
+  transform: scale(1.3);
+}
+
+.lf-progress::-moz-range-thumb {
+  -moz-appearance: none !important;
+  height: 13px;
+  width: 13px;
+  border: 0;
+  border-radius: 50%;
+  background: #0fccce;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.lf-progress::-moz-range-track {
+  cursor: pointer;
+  background: #e0e0e0;
+  border: none;
+  outline: none;
+  height: 4px;
+  border-radius: 3px;
+}
+
+.lf-progress::-ms-track {
+  width: 100%;
+  height: 3px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+.lf-progress::-ms-fill-lower,
+.lf-progress::-ms-fill-upper {
+  background: #e0e0e0;
+  border-radius: 3px;
+}
+
+.lf-progress::-ms-thumb {
+  border: 0;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background: #0fccce;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.lf-player-container :focus {
+  outline: 0;
+}
+
+/* --- Popover --- */
+.lf-popover {
+  position: relative;
+  display: inline-block;
+}
+
+.lf-popover-content {
+  display: inline-block;
+  position: absolute;
+  background-color: #ffffff;
+  opacity: 1;
+  visibility: visible;
+  transform: translate(0, -10px);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  transition: all 0.3s cubic-bezier(0.75, -0.02, 0.2, 0.97);
+  padding: 10px;
+  border-radius: 6px;
+  z-index: 1000;
+  min-width: 150px;
+}
+
+.lf-popover-content.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(0, 0px);
+  pointer-events: none;
+}
+
+.lf-arrow {
+  position: absolute;
+  z-index: -1;
+  content: '';
+  bottom: -9px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-style: solid;
+  border-width: 10px 10px 0px 10px;
+  border-color: #ffffff transparent transparent transparent;
+}
+
+.lf-left-align,
+.lf-left-align .lf-arrow {
+  left: 0;
+  right: unset;
+}
+
+.lf-right-align,
+.lf-right-align .lf-arrow {
+  right: 0;
+  left: unset;
+}
+
+/* --- Player Buttons --- */
+.lf-player-btn-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lf-player-btn {
+  cursor: pointer;
+  fill: #999;
+  width: 14px;
+  height: 14px;
+  transition: fill 0.2s ease;
+}
+
+.lf-player-btn:hover {
+  fill: #666;
+}
+
+.lf-player-btn.active {
+  fill: #555;
+}
+
+/* --- Text Input --- */
+.lf-text-input {
+  border: 1px #ccc solid;
+  border-radius: 5px;
+  padding: 3px;
+  width: 60px;
+  margin: 0;
+  font-size: 12px;
+}
+
+/* --- Color Picker --- */
+.lf-color-picker {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 90px;
+  gap: 15px;
+}
+
+.lf-color-selectors {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.lf-color-component {
+  display: flex;
+  flex-direction: row;
+  font-size: 12px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.lf-color-component strong {
+  width: 40px;
+  font-weight: 600;
+}
+
+.lf-color-component input[type='range'] {
+  margin: 0 0 0 10px;
+  flex: 1;
+}
+
+.lf-color-component input[type='number'] {
+  width: 50px;
+  margin: 0 0 0 10px;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  padding: 2px;
+}
+
+.lf-color-preview {
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 5px;
+  min-width: 70px;
+}
+
+.lf-preview {
+  height: 60px;
+  width: 60px;
+  border-radius: 4px;
+  border: 2px solid #ddd;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Snapshot Popover --- */
+.lf-popover-snapshot {
+  width: 150px;
+}
+
+.lf-popover-snapshot h5 {
+  margin: 5px 0 10px 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #555;
+}
+
+.lf-popover-snapshot a {
+  display: block;
+  text-decoration: none;
+  color: #0fccce;
+  font-size: 12px;
+  margin-bottom: 5px;
+  transition: color 0.2s ease;
+}
+
+.lf-popover-snapshot a:hover {
+  color: #0a9a9a;
+}
+
+.lf-popover-snapshot a:before {
+  content: '⥼';
+  margin-right: 5px;
+  font-size: 10px;
+}
+
+.lf-popover-snapshot .lf-note {
+  display: block;
+  margin-top: 10px;
+  color: #999;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+/* --- Player Controls Spacing --- */
+.lf-player-controls>div {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.lf-player-controls>div:first-child {
+  margin-left: 0;
+}
+
+.lf-player-controls>div:last-child {
+  margin-right: 0;
+}
+
+/* =============================================================================
+   4. TRADE-IN SECTION STYLES
+   ============================================================================= */
+
+/* --- Section Wrapper --- */
+#section-tradein-pmf {
+  background: linear-gradient(160deg, #0d1033 0%, #1a0a3d 100%);
+  padding: 60px 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Poppins, sans-serif;
+}
+
+.tradein-container {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* --- Heading --- */
+.tradein-heading {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.tradein-heading h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.5px;
+}
+
+.tradein-heading p {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.tradein-credit-range {
+  color: #4facfe;
+  font-weight: 700;
+}
+
+/* --- Glass Table (preview + modal) --- */
+.glass-trade-table {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  margin-bottom: 20px;
+}
+
+.glass-table-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 16px;
+  background: rgba(79, 172, 254, 0.18);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #4facfe;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.glass-table-header span:first-child {
+  text-align: left;
+}
+
+.glass-table-header span:last-child {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.glass-device-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  transition: background 0.2s ease;
+}
+
+.glass-device-row:last-child {
+  border-bottom: none;
+}
+
+.glass-device-row:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.glass-device-name {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  min-width: 0;
+}
+
+/* 1. Inside-table variant */
+.glass-trade-table .glass-trade-value-inner {
+  font-weight: 700;
+  color: #68adea;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* 2. Outside-table variant */
+.glass-trade-value-outer {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: white;
+  text-align: right;
+  white-space: nowrap;
+}
+
+@media (max-width: 360px) {
+
+  .glass-table-header,
+  .glass-device-row {
+    padding: 11px 12px;
+  }
+
+  .glass-table-header {
+    font-size: 0.72rem;
+  }
+
+  .glass-device-name {
+    font-size: 0.85rem;
+  }
+
+  .glass-trade-table .glass-trade-value-inner,
+  .glass-trade-value-outer {
+    font-size: 0.82rem;
+  }
+}
+
+/* --- See All Link --- */
+.tradein-see-all {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.tradein-see-all a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #4facfe;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.tradein-see-all a:hover {
+  color: #a8edea;
+}
+
+.tradein-plus-icon {
+  font-size: 1.2rem;
+  line-height: 1;
+  font-weight: 700;
+}
+
+/* --- WhatsApp CTA Button --- */
+.tradein-wa-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 16px 28px;
+  border-radius: 50px;
+  margin: 0 auto 18px;
+  max-width: 320px;
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tradein-wa-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(37, 211, 102, 0.45);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.tradein-wa-btn svg {
+  flex-shrink: 0;
+}
+
+/* --- Footnote --- */
+.tradein-footnote {
+  text-align: center;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.4);
+  line-height: 1.5;
+}
+
+/* --- Body lock when modal is open --- */
+body.modal-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+/* =============================================================================
+   TRADE-IN MODAL - CLEANED SCROLL (Replace existing modal styles in pmf.css)
+   ============================================================================= */
+
+#tradein-modal-pmf {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  /* Changed from auto to hidden - prevent body scroll */
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+#tradein-modal-pmf .tradein-modal-box {
+  background: linear-gradient(160deg, #1a1f4b 0%, #2d1b69 100%);
+  margin: 4% auto;
+  border-radius: 22px;
+  width: 92%;
+  max-width: 620px;
+  max-height: 88vh;
+  display: flex;
+  /* Added flex layout */
+  flex-direction: column;
+  /* Stack header and body vertically */
+  overflow: hidden;
+  /* Prevent box overflow */
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+#tradein-modal-pmf .modal-head {
+  padding: 24px 30px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  flex-shrink: 0;
+  /* Prevent header from shrinking */
+}
+
+#tradein-modal-pmf .modal-head h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+  margin: 0;
+  /* Remove default margins */
+}
+
+#tradein-modal-pmf .modal-close {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 22px;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  flex-shrink: 0;
+  /* Prevent button from shrinking */
+}
+
+#tradein-modal-pmf .modal-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+#tradein-modal-pmf .modal-body-scroll {
+  padding: 20px 28px 30px;
+  overflow-y: auto;
+  /* Only vertical scroll */
+  overflow-x: hidden;
+  /* Explicitly hide horizontal scroll */
+  flex: 1;
+  /* Take remaining space */
+  min-height: 0;
+  /* Critical for flex child scrolling */
+}
+
+/* Custom Scrollbar - Webkit */
+#tradein-modal-pmf .modal-body-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+#tradein-modal-pmf .modal-body-scroll::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+
+#tradein-modal-pmf .modal-body-scroll::-webkit-scrollbar-thumb {
+  background: #4facfe;
+  border-radius: 3px;
+}
+
+#tradein-modal-pmf .modal-body-scroll::-webkit-scrollbar-thumb:hover {
+  background: #3d9bfe;
+}
+
+/* Firefox Scrollbar */
+#tradein-modal-pmf .modal-body-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #4facfe rgba(255, 255, 255, 0.05);
+}
+
+/* Hide scrollbar when not needed but keep functionality */
+#tradein-modal-pmf .modal-body-scroll {
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+/* =============================================================================
+   5. IMAGE SLIDER — UNIFIED GLASS CARD STYLE (Windows & Mobile)
+   Applied to both Hero (slider-288-23) and Repair (slider-261-23)
+   ============================================================ */
+
+/* 1. Main Slider Card Wrapper - Now applied to BOTH Windows & Mobile */
+.ct-slider {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  position: relative;
+  
+  /* Glass Card Aesthetic */
+  border-radius: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.28),
+    0 2px 8px rgba(0, 0, 0, 0.18);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 8px; /* Breathing room for images inside card */
+  margin-bottom: 20px;
+}
+
+/* 2. The unslider container */
+.ct-slider .unslider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 10px; /* Match inner image radius */
+}
+
+.ct-slider .oxygen-unslider-container {
+  width: 100% !important;
+  overflow: hidden !important;
+  box-sizing: border-box;
+}
+
+/* 3. Smooth slide animation */
+.ct-slider .unslider-wrap {
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+  transition: left 0.55s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* 4. Images - Consistent Fit */
+.ct-slider .ct-slide img,
+.ct-slider .ct-image {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important; /* Allow height to scale naturally */
+  aspect-ratio: 16 / 9; /* Ensures uniform shape for different photo sizes */
+  object-fit: cover !important;
+  border-radius: 10px !important;
+}
+
+/* Specific adjustment for Repair Slider (Portrait photos in screenshots) */
+#slider-261-23 .ct-slide img {
+  aspect-ratio: 4 / 5; /* Taller ratio for repair process photos */
+}
+
+/* 5. Navigation Arrows */
+.ct-slider .unslider-arrow {
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  z-index: 20 !important;
+  width: 38px !important;
+  height: 38px !important;
+  background: rgba(0, 0, 0, 0.5) !important;
+  border-radius: 50% !important;
+  color: transparent !important;
+  font-size: 0 !important;
+  cursor: pointer;
+}
+
+.ct-slider .unslider-arrow::after {
+  content: '' !important;
+  display: block !important;
+  width: 10px !important;
+  height: 10px !important;
+  border-top: 2.5px solid #fff !important;
+  border-right: 2.5px solid #fff !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+}
+
+.ct-slider .unslider-arrow.next { right: 15px !important; }
+.ct-slider .unslider-arrow.next::after { transform: translate(-65%, -50%) rotate(45deg) !important; }
+
+.ct-slider .unslider-arrow.prev { left: 15px !important; }
+.ct-slider .unslider-arrow.prev::after { transform: translate(-35%, -50%) rotate(-135deg) !important; }
+
+/* 6. Nav Dots */
+.ct-slider .unslider-nav {
+  text-align: center;
+  margin-top: 12px;
+}
+
+.ct-slider .unslider-nav ol {
+  display: inline-flex !important;
+  gap: 8px !important;
+  list-style: none !important;
+  padding: 0 !important;
+}
+
+.ct-slider .unslider-nav ol li {
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 50% !important;
+  background: rgba(255, 255, 255, 0.3) !important;
+  cursor: pointer !important;
+  text-indent: -9999px;
+}
+
+.ct-slider .unslider-nav ol li.unslider-active {
+  background: #ffffff !important;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+}
+
+/* =============================================================================
+   MOBILE ADJUSTMENTS (≤ 768px)
+   ============================================================================= */
+@media (max-width: 768px) {
+  .ct-slider {
+    padding: 6px; /* Slightly tighter padding on mobile */
+    border-width: 1.5px;
+  }
+  
+  .ct-slider .unslider-arrow {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  /* Ensure the repair slider heading and text don't overlap with the card */
+  #section-126-23 .ct-section-inner-wrap {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
