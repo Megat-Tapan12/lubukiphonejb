@@ -856,48 +856,524 @@ body .is-layout-grid {
 }
 
 /* =============================================================================
-   4. TRADE-IN SECTION STYLES
+   4. TRADE-IN SECTION STYLES — PREMIUM REDESIGN
    ============================================================================= */
 
-/* --- Section Wrapper --- */
+/* ── CSS Variables for Trade-In palette ── */
 #section-tradein-pmf {
-  background: linear-gradient(160deg, #0d1033 0%, #1a0a3d 100%);
-  padding: 60px 20px;
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Poppins, sans-serif;
+  --ti-bg-start:    #08091a;
+  --ti-bg-mid:      #0e1535;
+  --ti-bg-end:      #160b38;
+  --ti-accent:      #4f9eff;
+  --ti-accent-alt:  #a78bfa;
+  --ti-gold:        #f4c842;
+  --ti-green:       #25d366;
+  --ti-white:       #ffffff;
+  --ti-white-60:    rgba(255,255,255,0.60);
+  --ti-white-12:    rgba(255,255,255,0.12);
+  --ti-white-06:    rgba(255,255,255,0.06);
+  --ti-radius-lg:   20px;
+  --ti-radius-md:   14px;
+  --ti-radius-sm:   10px;
+  --ti-shadow:      0 24px 60px rgba(0,0,0,0.55);
+  --ti-transition:  0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* ── Section wrapper ── */
+#section-tradein-pmf {
+  position: relative;
+  background: linear-gradient(160deg, var(--ti-bg-start) 0%, var(--ti-bg-mid) 50%, var(--ti-bg-end) 100%);
+  padding: 72px 20px 80px;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Poppins, sans-serif;
+  overflow: hidden;
+}
+
+/* Decorative ambient blobs */
+#section-tradein-pmf::before,
+#section-tradein-pmf::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(80px);
+  opacity: 0.18;
+}
+#section-tradein-pmf::before {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, #4f9eff, transparent 70%);
+  top: -120px; left: -150px;
+}
+#section-tradein-pmf::after {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, #a78bfa, transparent 70%);
+  bottom: -80px; right: -100px;
+}
+
+/* ── Container ── */
 .tradein-container {
   max-width: 640px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
-/* --- Heading --- */
+/* ── Badge row ── */
+.tradein-badge-row {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.tradein-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(79, 158, 255, 0.14);
+  border: 1px solid rgba(79, 158, 255, 0.35);
+  color: var(--ti-accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 100px;
+}
+
+/* ── Heading ── */
 .tradein-heading {
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
 }
 
 .tradein-heading h2 {
-  font-size: 2rem;
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
   font-weight: 800;
-  color: #ffffff;
-  margin: 0 0 12px 0;
+  color: var(--ti-white);
+  margin: 0 0 14px;
+  line-height: 1.18;
   letter-spacing: -0.5px;
 }
 
+.tradein-heading-accent {
+  background: linear-gradient(90deg, #4f9eff, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 .tradein-heading p {
-  font-size: 1.05rem;
-  color: rgba(255, 255, 255, 0.75);
-  line-height: 1.6;
+  font-size: 1.02rem;
+  color: var(--ti-white-60);
+  line-height: 1.7;
   margin: 0;
 }
 
 .tradein-credit-range {
-  color: #4facfe;
+  color: var(--ti-accent);
   font-weight: 700;
+  -webkit-text-fill-color: var(--ti-accent); /* override gradient clip for inline span */
 }
 
-/* --- Glass Table (preview + modal) --- */
+/* ── Promo Banner ── */
+.tradein-promo-banner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, rgba(244,200,66,0.14) 0%, rgba(244,200,66,0.07) 100%);
+  border: 1px solid rgba(244,200,66,0.40);
+  border-radius: var(--ti-radius-md);
+  padding: 14px 20px;
+  margin-bottom: 28px;
+  color: var(--ti-gold);
+  font-size: 0.9rem;
+  line-height: 1.45;
+  text-align: left;
+  overflow: hidden;
+}
+
+/* Pulse ring behind banner */
+.tradein-promo-pulse {
+  position: absolute;
+  left: -2px; top: -2px;
+  width: calc(100% + 4px); height: calc(100% + 4px);
+  border-radius: var(--ti-radius-md);
+  border: 2px solid rgba(244,200,66,0.55);
+  animation: promoPulse 2.4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes promoPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(1.01); }
+}
+
+.tradein-promo-banner svg {
+  flex-shrink: 0;
+  fill: var(--ti-gold);
+}
+
+/* ══════════════════════════════════════
+   ESTIMATOR CARD
+══════════════════════════════════════ */
+.tradein-estimator-card {
+  background: rgba(255,255,255,0.055);
+  border: 1px solid var(--ti-white-12);
+  border-radius: var(--ti-radius-lg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  overflow: hidden;
+  margin-bottom: 24px;
+  box-shadow: var(--ti-shadow), inset 0 1px 0 rgba(255,255,255,0.08);
+}
+
+/* Card header bar */
+.estimator-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 22px;
+  background: linear-gradient(90deg, rgba(79,158,255,0.18) 0%, rgba(167,139,250,0.10) 100%);
+  border-bottom: 1px solid var(--ti-white-12);
+  color: var(--ti-white);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.estimator-card-header svg {
+  stroke: var(--ti-accent);
+  flex-shrink: 0;
+}
+
+/* ── Estimator Step ── */
+.estimator-step {
+  padding: 22px 22px 0;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity var(--ti-transition), transform var(--ti-transition);
+  padding-bottom: 22px;
+}
+
+/* First step always visible */
+.estimator-step:first-of-type {
+  opacity: 1;
+  transform: none;
+}
+
+.estimator-step.visible {
+  opacity: 1;
+  transform: none;
+}
+
+.estimator-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ti-white-60);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 12px;
+}
+
+.estimator-step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--ti-accent), var(--ti-accent-alt));
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+/* ── Custom Select ── */
+.estimator-select-wrap {
+  position: relative;
+}
+
+.estimator-select {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  background: rgba(255,255,255,0.07);
+  border: 1.5px solid var(--ti-white-12);
+  border-radius: var(--ti-radius-sm);
+  color: var(--ti-white);
+  font-size: 0.97rem;
+  font-weight: 500;
+  font-family: inherit;
+  padding: 14px 44px 14px 16px;
+  cursor: pointer;
+  outline: none;
+  transition: border-color var(--ti-transition), background var(--ti-transition);
+}
+
+.estimator-select:focus {
+  border-color: var(--ti-accent);
+  background: rgba(79,158,255,0.09);
+}
+
+.estimator-select option,
+.estimator-select optgroup {
+  background: #1a1f4b;
+  color: #fff;
+}
+
+/* Chevron icon */
+.select-chevron {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  stroke: var(--ti-white-60);
+  pointer-events: none;
+}
+
+/* ── Condition Cards ── */
+.condition-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+/* Hide real radio */
+.condition-card input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0; height: 0;
+}
+
+.condition-card {
+  cursor: pointer;
+}
+
+.condition-card-inner {
+  background: rgba(255,255,255,0.05);
+  border: 1.5px solid var(--ti-white-12);
+  border-radius: var(--ti-radius-md);
+  padding: 14px 10px;
+  text-align: center;
+  transition:
+    border-color var(--ti-transition),
+    background var(--ti-transition),
+    transform var(--ti-transition),
+    box-shadow var(--ti-transition);
+}
+
+.condition-card:hover .condition-card-inner {
+  border-color: rgba(79,158,255,0.45);
+  background: rgba(79,158,255,0.08);
+  transform: translateY(-2px);
+}
+
+.condition-card.selected .condition-card-inner {
+  border-color: var(--ti-accent);
+  background: rgba(79,158,255,0.14);
+  box-shadow: 0 0 0 3px rgba(79,158,255,0.18);
+  transform: translateY(-2px);
+}
+
+.condition-icon {
+  font-size: 1.5rem;
+  margin-bottom: 6px;
+  line-height: 1;
+}
+
+.condition-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ti-white);
+  margin-bottom: 4px;
+}
+
+.condition-desc {
+  font-size: 0.72rem;
+  color: var(--ti-white-60);
+  line-height: 1.4;
+}
+
+/* ── Result Panel ── */
+.estimator-result {
+  margin: 0 22px 22px;
+  background: linear-gradient(135deg, rgba(79,158,255,0.14) 0%, rgba(167,139,250,0.10) 100%);
+  border: 1.5px solid rgba(79,158,255,0.35);
+  border-radius: var(--ti-radius-md);
+  padding: 24px 20px 18px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(10px) scale(0.98);
+  transition: opacity var(--ti-transition), transform var(--ti-transition);
+}
+
+.estimator-result.visible {
+  opacity: 1;
+  transform: none;
+}
+
+.result-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ti-white-60);
+  margin-bottom: 8px;
+}
+
+.result-amount {
+  font-size: clamp(2.2rem, 7vw, 3rem);
+  font-weight: 900;
+  background: linear-gradient(90deg, #4f9eff, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 12px;
+  letter-spacing: -1px;
+}
+
+.result-bonus {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(244,200,66,0.12);
+  border: 1px solid rgba(244,200,66,0.30);
+  color: var(--ti-gold);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 100px;
+  margin-bottom: 10px;
+}
+
+.result-note {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.35);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ── See All Link ── */
+.tradein-see-all {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.tradein-see-all a {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--ti-accent);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color var(--ti-transition), gap var(--ti-transition);
+}
+
+.tradein-see-all a:hover {
+  color: #a8d8ff;
+  gap: 8px;
+}
+
+.tradein-see-all a svg {
+  transition: transform var(--ti-transition);
+}
+
+.tradein-see-all a:hover svg {
+  transform: translateY(2px);
+}
+
+/* ── WhatsApp CTA Button ── */
+.tradein-wa-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 17px 30px;
+  border-radius: 50px;
+  margin: 0 auto 18px;
+  max-width: 340px;
+  box-shadow: 0 8px 28px rgba(37, 211, 102, 0.30);
+  transition: transform var(--ti-transition), box-shadow var(--ti-transition);
+}
+
+.tradein-wa-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 36px rgba(37, 211, 102, 0.42);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.tradein-wa-btn svg {
+  flex-shrink: 0;
+}
+
+/* ── Footnote ── */
+.tradein-footnote {
+  text-align: center;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.30);
+  line-height: 1.5;
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  #section-tradein-pmf {
+    padding: 52px 16px 60px;
+  }
+
+  .condition-options {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 7px;
+  }
+
+  .condition-card-inner {
+    padding: 12px 6px;
+  }
+
+  .condition-icon {
+    font-size: 1.2rem;
+  }
+
+  .condition-title {
+    font-size: 0.78rem;
+  }
+
+  .condition-desc {
+    display: none; /* hide hint text on very small screens */
+  }
+
+  .tradein-wa-btn {
+    max-width: 100%;
+    font-size: 0.93rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .estimator-select {
+    font-size: 0.88rem;
+    padding: 12px 40px 12px 12px;
+  }
+}
+
+/* ── Body lock when modal is open ── */
+body.modal-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+/* ── OLD GLASS TABLE STYLES (kept for modal compatibility) ── */
 .glass-trade-table {
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -923,14 +1399,8 @@ body .is-layout-grid {
   letter-spacing: 0.07em;
 }
 
-.glass-table-header span:first-child {
-  text-align: left;
-}
-
-.glass-table-header span:last-child {
-  text-align: right;
-  white-space: nowrap;
-}
+.glass-table-header span:first-child { text-align: left; }
+.glass-table-header span:last-child  { text-align: right; white-space: nowrap; }
 
 .glass-device-row {
   display: grid;
@@ -942,22 +1412,16 @@ body .is-layout-grid {
   transition: background 0.2s ease;
 }
 
-.glass-device-row:last-child {
-  border-bottom: none;
-}
-
-.glass-device-row:hover {
-  background: rgba(255, 255, 255, 0.05);
-}
+.glass-device-row:last-child { border-bottom: none; }
+.glass-device-row:hover      { background: rgba(255,255,255,0.05); }
 
 .glass-device-name {
   font-size: 0.92rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255,255,255,0.9);
   min-width: 0;
 }
 
-/* 1. Inside-table variant */
 .glass-trade-table .glass-trade-value-inner {
   font-weight: 700;
   color: #68adea;
@@ -965,106 +1429,12 @@ body .is-layout-grid {
   white-space: nowrap;
 }
 
-/* 2. Outside-table variant */
 .glass-trade-value-outer {
   font-size: 0.9rem;
   font-weight: 700;
   color: white;
   text-align: right;
   white-space: nowrap;
-}
-
-@media (max-width: 360px) {
-
-  .glass-table-header,
-  .glass-device-row {
-    padding: 11px 12px;
-  }
-
-  .glass-table-header {
-    font-size: 0.72rem;
-  }
-
-  .glass-device-name {
-    font-size: 0.85rem;
-  }
-
-  .glass-trade-table .glass-trade-value-inner,
-  .glass-trade-value-outer {
-    font-size: 0.82rem;
-  }
-}
-
-/* --- See All Link --- */
-.tradein-see-all {
-  text-align: center;
-  margin-bottom: 22px;
-}
-
-.tradein-see-all a {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  color: #4facfe;
-  font-size: 0.95rem;
-  font-weight: 600;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.tradein-see-all a:hover {
-  color: #a8edea;
-}
-
-.tradein-plus-icon {
-  font-size: 1.2rem;
-  line-height: 1;
-  font-weight: 700;
-}
-
-/* --- WhatsApp CTA Button --- */
-.tradein-wa-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  background: linear-gradient(135deg, #25d366, #128c7e);
-  color: #ffffff;
-  font-size: 1rem;
-  font-weight: 700;
-  text-decoration: none;
-  padding: 16px 28px;
-  border-radius: 50px;
-  margin: 0 auto 18px;
-  max-width: 320px;
-  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.tradein-wa-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(37, 211, 102, 0.45);
-  color: #ffffff;
-  text-decoration: none;
-}
-
-.tradein-wa-btn svg {
-  flex-shrink: 0;
-}
-
-/* --- Footnote --- */
-.tradein-footnote {
-  text-align: center;
-  font-size: 0.78rem;
-  color: rgba(255, 255, 255, 0.4);
-  line-height: 1.5;
-}
-
-/* --- Body lock when modal is open --- */
-body.modal-open {
-  overflow: hidden;
-  position: fixed;
-  width: 100%;
 }
 
 /* =============================================================================
