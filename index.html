@@ -358,90 +358,178 @@
 
 
     <!-- ============================================================
-     SECTION 2B: TRADE IN IPHONE
+     SECTION 2B: TRADE IN IPHONE — PREMIUM REDESIGN
      (styles in pmf.css — Section 4)
      ============================================================ -->
     <section id="section-tradein-pmf">
         <div class="tradein-container">
 
-            <!-- Heading -->
+            <!-- ── Promo Banner ── -->
+            <div class="tradein-promo-banner">
+                <div class="tradein-promo-pulse"></div>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <span>Tawaran Terhad &nbsp;·&nbsp; <strong>Bonus Ekstra RM200</strong> untuk Trade-In bulan ini!</span>
+            </div>
+
+            <!-- ── Section Heading ── -->
             <div class="tradein-heading">
-                <h2>Nak Trade In iPhone Anda?</h2>
+                <h2>Tukar iPhone Lama,<br><span class="tradein-heading-accent">Dapat Nilai Terbaik.</span></h2>
                 <p>
-                    Tukar iPhone lama anda hari ini &
-                    <span class="tradein-credit-range">nikmati kredit sehingga RM4,000◊</span>
-                    <br> untuk iPhone baru! Stok terhad — Siapa Cepat Dia Dapat🤗!
+                    Nikmati kredit sehingga
+                    <span class="tradein-credit-range">RM4,000◊</span>
+                    untuk iPhone baru anda.<br>Stok terhad — Siapa Cepat Dia Dapat!
                 </p>
             </div>
 
-            <!-- Glass Table (preview — top 9 models) -->
+            <!-- ── Instant Estimator Card ── -->
+            <div class="tradein-estimator-card">
+                <div class="estimator-card-header">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    <span>Kalkulator Nilai Trade-In</span>
+                </div>
+
+                <!-- Step 1: Model Selection -->
+                <div class="estimator-step visible">
+                    <div class="estimator-label">
+                        <span class="estimator-step-num">1</span>
+                        Pilih Model iPhone
+                    </div>
+                    <div class="estimator-select-wrap">
+                        <select id="tradein-model-select" class="estimator-select">
+                            <option value="">-- Pilih model --</option>
+                            <optgroup label="iPhone 16 Series">
+                                <option value="16pm">iPhone 16 Pro Max</option>
+                                <option value="16p">iPhone 16 Pro</option>
+                                <option value="16plus">iPhone 16 Plus</option>
+                                <option value="16">iPhone 16</option>
+                            </optgroup>
+                            <optgroup label="iPhone 15 Series">
+                                <option value="15pm">iPhone 15 Pro Max</option>
+                                <option value="15p">iPhone 15 Pro</option>
+                                <option value="15plus">iPhone 15 Plus</option>
+                                <option value="15">iPhone 15</option>
+                            </optgroup>
+                            <optgroup label="iPhone 14 Series">
+                                <option value="14pm">iPhone 14 Pro Max</option>
+                                <option value="14p">iPhone 14 Pro</option>
+                                <option value="14plus">iPhone 14 Plus</option>
+                                <option value="14">iPhone 14</option>
+                            </optgroup>
+                            <optgroup label="iPhone 13 Series">
+                                <option value="13pm">iPhone 13 Pro Max</option>
+                                <option value="13p">iPhone 13 Pro</option>
+                                <option value="13">iPhone 13</option>
+                                <option value="13mini">iPhone 13 mini</option>
+                            </optgroup>
+                            <optgroup label="iPhone 12 Series">
+                                <option value="12pm">iPhone 12 Pro Max</option>
+                                <option value="12p">iPhone 12 Pro</option>
+                                <option value="12">iPhone 12</option>
+                                <option value="12mini">iPhone 12 mini</option>
+                            </optgroup>
+                            <optgroup label="iPhone 11 Series">
+                                <option value="11pm">iPhone 11 Pro Max</option>
+                                <option value="11p">iPhone 11 Pro</option>
+                                <option value="11">iPhone 11</option>
+                            </optgroup>
+                            <optgroup label="Lain-lain">
+                                <option value="xsmax">iPhone XS Max</option>
+                                <option value="xs">iPhone XS</option>
+                                <option value="xr">iPhone XR</option>
+                            </optgroup>
+                        </select>
+                        <svg class="select-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                </div>
+
+                <!-- Step 2: Condition Selection -->
+                <div class="estimator-step visible">
+                    <div class="estimator-label">
+                        <span class="estimator-step-num">2</span>
+                        Pilih Kondisi Peranti
+                    </div>
+                    <div class="condition-options">
+                        <label class="condition-card" data-condition="good">
+                            <input type="radio" name="tradein-condition" value="good">
+                            <div class="condition-card-inner">
+                                <div class="condition-icon">✦</div>
+                                <div class="condition-title">Baik</div>
+                                <div class="condition-desc">Tiada calar, berfungsi penuh</div>
+                            </div>
+                        </label>
+                        <label class="condition-card" data-condition="fair">
+                            <input type="radio" name="tradein-condition" value="fair">
+                            <div class="condition-card-inner">
+                                <div class="condition-icon">◈</div>
+                                <div class="condition-title">Sederhana</div>
+                                <div class="condition-desc">Calar ringan, berfungsi</div>
+                            </div>
+                        </label>
+                        <label class="condition-card" data-condition="poor">
+                            <input type="radio" name="tradein-condition" value="poor">
+                            <div class="condition-card-inner">
+                                <div class="condition-icon">◇</div>
+                                <div class="condition-title">Rosak</div>
+                                <div class="condition-desc">Skrin pecah / rosak</div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Result Display -->
+                <div class="estimator-result" id="tradein-result" aria-live="polite">
+                    <div class="result-label">Anggaran Nilai Trade-In Anda</div>
+                    <div class="result-amount" id="tradein-result-value">—</div>
+                    <div class="result-bonus">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        Termasuk Bonus Ekstra <strong>+RM200</strong> Bulan Ini!
+                    </div>
+                    <p class="result-note">◊ Anggaran sahaja. Nilai akhir bergantung kepada kondisi dan storan.</p>
+                </div>
+
+            </div><!-- end estimator card -->
+
+            <!-- ── Price Table (preview) ── -->
             <div class="glass-trade-table">
                 <div class="glass-table-header">
                     <span>Model iPhone</span>
                     <span>Anggaran Nilai Trade-in<sup>◊</sup></span>
                 </div>
                 <div>
-                    <div class="glass-device-row">
-                        <div class="glass-device-name">iPhone 16 Pro Max</div>
-                        <div class="glass-trade-value-outer">Sehingga RM 4,000</div>
-                    </div>
-                    <div class="glass-device-row">
-                        <div class="glass-device-name">iPhone 16 Pro</div>
-                        <div class="glass-trade-value-outer">Sehingga RM 3,500</div>
-                    </div>
-                    <div class="glass-device-row">
-                        <div class="glass-device-name">iPhone 16 Plus</div>
-                        <div class="glass-trade-value-outer">Sehingga RM 3,000</div>
-                    </div>
-                    <div class="glass-device-row">
-                        <div class="glass-device-name">iPhone 16</div>
-                        <div class="glass-trade-value-outer">Sehingga RM 2,700</div>
-                    </div>
-                    <div class="glass-device-row">
-                        <div class="glass-device-name">iPhone 15 Pro Max</div>
-                        <div class="glass-trade-value-outer">Sehingga RM 3,000</div>
-                    </div>
-                    <div class="glass-device-row">
-                        <div class="glass-device-name">iPhone 15 Pro</div>
-                        <div class="glass-trade-value-outer">Sehingga RM 2,400</div>
-                    </div>
-                    <div class="glass-device-row">
-                        <div class="glass-device-name">iPhone 15 Plus</div>
-                        <div class="glass-trade-value-outer">Sehingga RM 2,300</div>
-                    </div>
-                    <div class="glass-device-row">
-                        <div class="glass-device-name">iPhone 15</div>
-                        <div class="glass-trade-value-outer">Sehingga RM 2,000</div>
-                    </div>
-                    <div class="glass-device-row">
-                        <div class="glass-device-name">iPhone 14 Pro Max</div>
-                        <div class="glass-trade-value-outer">Sehingga RM 2,300</div>
-                    </div>
+                    <div class="glass-device-row"><div class="glass-device-name">iPhone 16 Pro Max</div><div class="glass-trade-value-outer">Sehingga RM 4,000</div></div>
+                    <div class="glass-device-row"><div class="glass-device-name">iPhone 16 Pro</div><div class="glass-trade-value-outer">Sehingga RM 3,500</div></div>
+                    <div class="glass-device-row"><div class="glass-device-name">iPhone 16 Plus</div><div class="glass-trade-value-outer">Sehingga RM 3,000</div></div>
+                    <div class="glass-device-row"><div class="glass-device-name">iPhone 16</div><div class="glass-trade-value-outer">Sehingga RM 2,700</div></div>
+                    <div class="glass-device-row"><div class="glass-device-name">iPhone 15 Pro Max</div><div class="glass-trade-value-outer">Sehingga RM 3,000</div></div>
+                    <div class="glass-device-row"><div class="glass-device-name">iPhone 15 Pro</div><div class="glass-trade-value-outer">Sehingga RM 2,400</div></div>
+                    <div class="glass-device-row"><div class="glass-device-name">iPhone 15 Plus</div><div class="glass-trade-value-outer">Sehingga RM 2,300</div></div>
+                    <div class="glass-device-row"><div class="glass-device-name">iPhone 15</div><div class="glass-trade-value-outer">Sehingga RM 2,000</div></div>
+                    <div class="glass-device-row"><div class="glass-device-name">iPhone 14 Pro Max</div><div class="glass-trade-value-outer">Sehingga RM 2,300</div></div>
                 </div>
             </div>
 
-            <!-- Expand: See All -->
+            <!-- See All link -->
             <div class="tradein-see-all">
                 <a href="#" id="tradein-see-all-btn">
-                    Lihat semua nilai iPhone
-                    <span class="tradein-plus-icon">+</span>
+                    Lihat semua model &amp; harga
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
                 </a>
             </div>
 
-            <!-- WhatsApp: Ask Trade-In Price -->
+            <!-- ── WhatsApp CTA ── -->
             <a href="https://api.whatsapp.com/send?phone=601156798241&text=Hi%20Saya%20datang%20dari%20web%20dan%20nak%20tanya%20harga%20Trade%20In%20iPhone%20saya.%20Boleh%20bantu%3F"
                 target="_blank" class="tradein-wa-btn">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                 </svg>
-                Tanya Harga Trade In iPhone
+                Tanya Harga Trade In Sekarang
             </a>
 
             <div class="tradein-footnote">
                 <sup>◊</sup> Nilai trade-in sebenar adalah tertakluk kepada kapasiti storan, kondisi peranti, dan
                 spesifikasi set peranti anda.
             </div>
+
         </div><!-- end tradein-container -->
     </section>
 
@@ -546,7 +634,7 @@
                         </div>
                         <div class="glass-device-row">
                             <div class="glass-device-name">iPhone 11 Pro Max</div>
-                            <div class="glass-trade-value-inner">RM500-RM 900</div>
+                            <div class="glass-trade-value-inner">RM500-RM 750</div>
                         </div>
                         <div class="glass-device-row">
                             <div class="glass-device-name">iPhone 11 Pro</div>
@@ -794,55 +882,125 @@
         crossorigin="anonymous">
         </script>
 
-    <!-- Trade-In Modal Logic -->
+    <!-- Trade-In Modal + Estimator Logic -->
     <script>
-        // Replace your existing Trade-In Modal Logic with this:
+    /* ============================================================
+       TRADE-IN: Modal + Live Estimator
+       ============================================================ */
+    (function () {
 
-        (function () {
-            var modal = document.getElementById('tradein-modal-pmf');
-            var openBtn = document.getElementById('tradein-see-all-btn');
-            var closeBtn = document.getElementById('tradein-modal-close');
+        /* ── 1. Trade-in price data (min/max per model, good condition) ── */
+        var prices = {
+            '16pm':   { min: 3100, max: 4000 },
+            '16p':    { min: 2700, max: 3500 },
+            '16plus': { min: 2300, max: 3000 },
+            '16':     { min: 2000, max: 2700 },
+            '15pm':   { min: 2500, max: 3000 },
+            '15p':    { min: 1800, max: 2400 },
+            '15plus': { min: 1700, max: 2300 },
+            '15':     { min: 1500, max: 2000 },
+            '14pm':   { min: 1900, max: 2300 },
+            '14p':    { min: 1700, max: 2100 },
+            '14plus': { min: 1200, max: 1600 },
+            '14':     { min: 1100, max: 1400 },
+            '13pm':   { min: 1300, max: 1500 },
+            '13p':    { min: 1300, max: 1500 },
+            '13':     { min:  900, max: 1300 },
+            '13mini': { min:  800, max:  900 },
+            '12pm':   { min: 1000, max: 1300 },
+            '12p':    { min:  800, max: 1000 },
+            '12':     { min:  500, max:  750 },
+            '12mini': { min:  300, max:  600 },
+            '11pm':   { min:  500, max:  750 },
+            '11p':    { min:  500, max:  800 },
+            '11':     { min:  350, max:  650 },
+            'xsmax':  { min:  300, max:  600 },
+            'xs':     { min:  200, max:  500 },
+            'xr':     { min:  200, max:  500 }
+        };
 
-            if (!modal || !openBtn || !closeBtn) return;
+        /* Condition multipliers */
+        var conditionMultiplier = { good: 1.0, fair: 0.75, poor: 0.50 };
 
-            // Store scroll position
-            var scrollY = 0;
+        /* ── 2. Estimator Logic ── */
+        var modelSelect  = document.getElementById('tradein-model-select');
+        var resultPanel  = document.getElementById('tradein-result');
+        var resultValue  = document.getElementById('tradein-result-value');
 
-            function openModal() {
-                scrollY = window.scrollY; // Remember scroll position
-                modal.style.display = 'flex'; // Changed to flex for centering
-                modal.style.alignItems = 'center';
-                modal.style.justifyContent = 'center';
-                document.body.classList.add('modal-open');
-                document.body.style.top = `-${scrollY}px`; // Lock body position
+        function formatRM(val) {
+            return 'RM ' + val.toLocaleString('ms-MY');
+        }
+
+        function updateEstimate() {
+            var model     = modelSelect ? modelSelect.value : '';
+            var condInput = document.querySelector('input[name="tradein-condition"]:checked');
+            var condition = condInput ? condInput.value : '';
+
+            /* Only show result when both model AND condition are selected */
+            if (!model || !condition || !prices[model]) {
+                if (resultPanel) resultPanel.classList.remove('visible');
+                return;
             }
 
-            function closeModal() {
-                modal.style.display = 'none';
-                document.body.classList.remove('modal-open');
-                document.body.style.top = '';
-                window.scrollTo(0, scrollY); // Restore scroll position
+            var mult = conditionMultiplier[condition] || 1;
+            var pMin = Math.round(prices[model].min * mult / 50) * 50;
+            var pMax = Math.round(prices[model].max * mult / 50) * 50;
+
+            /* Set value then animate in */
+            if (resultValue) {
+                resultValue.textContent = formatRM(pMin) + ' – ' + formatRM(pMax);
             }
+            if (resultPanel) {
+                resultPanel.classList.add('visible');
+            }
+        }
 
-            openBtn.addEventListener('click', function (e) {
-                e.preventDefault();
-                openModal();
+        if (modelSelect) modelSelect.addEventListener('change', updateEstimate);
+
+        /* Condition card click — toggle selected class on the inner div */
+        document.querySelectorAll('.condition-card').forEach(function(card) {
+            card.addEventListener('click', function() {
+                document.querySelectorAll('.condition-card').forEach(function(c) {
+                    c.classList.remove('selected');
+                });
+                card.classList.add('selected');
+                updateEstimate();
             });
+        });
 
-            closeBtn.addEventListener('click', closeModal);
+        /* ── 3. Modal Logic ── */
+        var modal    = document.getElementById('tradein-modal-pmf');
+        var openBtn  = document.getElementById('tradein-see-all-btn');
+        var closeBtn = document.getElementById('tradein-modal-close');
 
-            // Close on backdrop click (but not when clicking inside modal)
-            modal.addEventListener('click', function (e) {
-                if (e.target === modal) closeModal();
-            });
+        if (!modal || !openBtn || !closeBtn) return;
 
-            // Close on Escape key
-            document.addEventListener('keydown', function (e) {
-                if (e.key === 'Escape' && modal.style.display === 'flex') {
-                    closeModal();
-                }
-            });
-        })();
+        var scrollY = 0;
+
+        function openModal() {
+            scrollY = window.scrollY;
+            modal.style.display = 'flex';
+            modal.style.alignItems = 'center';
+            modal.style.justifyContent = 'center';
+            document.body.classList.add('modal-open');
+            document.body.style.top = '-' + scrollY + 'px';
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+            document.body.classList.remove('modal-open');
+            document.body.style.top = '';
+            window.scrollTo(0, scrollY);
+        }
+
+        openBtn.addEventListener('click', function (e) { e.preventDefault(); openModal(); });
+        closeBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && modal.style.display === 'flex') closeModal();
+        });
+
+    })();
     </script>
 
     <!-- WordPress Speculation Rules (prefetch) -->
@@ -852,6 +1010,5 @@
 
     <script type="text/javascript" id="ct-footer-js"></script>
 </body>
-
 
 </html>
